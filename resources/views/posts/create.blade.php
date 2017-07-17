@@ -49,10 +49,10 @@
         <form id="postForm" class="form-horizontal" method="POST" action="/posts/store" enctype="multipart/form-data">
                             {{ csrf_field() }}
             <link rel="stylesheet" href="/css/forms.css">
-            <input type="text" placeholder="Title" id="title" id="title">
+            <input type="text" placeholder="Title" id="title" name="title">
             <hr>
-            <input type="text" placeholder="Subtitle" id="subtitle" id="subtitle">
-            <input type="text" placeholder="Enter your tags here seperated by coma ..." id="tags" id="tags">
+            <input type="text" placeholder="Subtitle" id="subtitle" name="subtitle">
+            <input type="text" placeholder="Enter your tags here seperated by coma ..." id="tags" name="tags">
             <textarea placeholder="Enter Content Here..." name="content" id="content" cols="30" rows="20"></textarea>
             <div id="HiddenInputs" style="display:none;">
 
