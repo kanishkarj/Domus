@@ -38,7 +38,7 @@ class PostController extends Controller
             $path = $value->store('public/posts/'. str_slug($post->title).'/');
             $image = new Image;
             $image->path = $path;
-            $image->post_id = $post -> id;
+            $image -> post_id = $post -> id;
             $image->save();
         }
     }
