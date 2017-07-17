@@ -16,7 +16,10 @@ class CreateChannelsTable extends Migration
         Schema::create('channels', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('subtitle');
+            $table->string('user_id');
+            $table->string('caption');
+            $table->string('avatar');
+            $table->string('slug');
             $table->timestamps();
         });
         Schema::create('channels_post', function (Blueprint $table) {
