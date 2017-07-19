@@ -26,4 +26,6 @@ Route::middleware([])->group(function () {
 
     Route::get('/channels/create','ChannelsController@index');
     Route::post('/channels/store','ChannelsController@store');
+    Route::get('/channels/edit/{slug}','ChannelsController@edit');
+    Route::post('/channels/patch/{slug}','ChannelsController@patch');
 });
