@@ -41,21 +41,49 @@
        </ul>
     </div>
 
-    <footer class="w3-container w3-teal">
-      <p>Domus</p>
-    </footer>
-
   </div>
 </div> 
 <div id="createPost">
-        <form id="postForm" class="form-horizontal" method="POST" action="/posts/store" enctype="multipart/form-data">
+         @if(isset($post))
+            <form id="postForm" class="form-horizontal" method="POST" action="/posts/patch/{{$post->slug}}" enctype="multipart/form-data">
+         @else
+            <form id="postForm" class="form-horizontal" method="POST" action="/posts/store" enctype="multipart/form-data">
+        @endif     
                             {{ csrf_field() }}
-            <link rel="stylesheet" href="/css/forms.css">
-            <input type="text" placeholder="Title" id="title" name="title">
+            
+             @if(isset($post))
+             <input type="text" placeholder="Title" id="title" name="title" value="{{$post->title}}">
+             @else
+             <input type="text" placeholder="Title" id="title" name="title" >
+             @endif
+            
             <hr>
-            <input type="text" placeholder="Subtitle" id="subtitle" name="subtitle">
-            <input type="text" placeholder="Enter your tags here seperated by coma ..." id="tags" name="tags">
-            <textarea placeholder="Enter Content Here..." name="content" id="content" cols="30" rows="20"></textarea>
+             @if(isset($post))
+             <input type="text" placeholder="Subtitle" id="subtitle" name="subtitle" value="{{$post->subtitle}}">
+             @else
+             <input type="text" placeholder="Subtitle" id="subtitle" name="subtitle" >
+             @endif
+            
+            @php
+            $tags="";
+            foreach($post->tags as $tag){
+                $tags = $tags .','.$tag->name;
+            }
+            $tags = substr($tags, 1);
+            @endphp
+
+             @if(isset($post))
+             <input type="text" placeholder="Enter your tags here seperated by comma ..." id="tags" name="tags" value="{{$tags}}">
+             @else
+             <input type="text" placeholder="Enter your tags here seperated by comma ..." id="tags" name="tags">
+             @endif
+            
+             @if(isset($post))
+             <textarea placeholder="Enter Content Here..." name="content" id="content" cols="30" rows="20">{{$post->content}}</textarea>
+             @else
+             <textarea placeholder="Enter Content Here..." name="content" id="content" cols="30" rows="20"></textarea>
+             @endif
+            
             
         </form>
 
@@ -66,6 +94,13 @@
 @section('script')  
     <link rel="stylesheet" href="/css/forms.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
+
+    @if(isset($post))
+    <script>
+        alert("Due to security reasons, you will have to upload the images again. Sorry for the inconvenience.");
+    </script>
+    @endif
+
     <script>
 $('#postForm').submit(function(){
     alert('hello')

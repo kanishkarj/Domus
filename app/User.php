@@ -33,11 +33,11 @@ class User extends Authenticatable
     }
 
     function followUser(User $user) {
-        $this->followers()->attach($user->id);
+        $this->userFollowers()->attach($user->id);
     }
 
     function unfollowUser(User $user) {
-        $this->followers()->detach($user->id);
+        $this->userFollowers()->detach($user->id);
     }
 
     public function channels(){
