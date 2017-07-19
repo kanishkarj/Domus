@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\TagsController;
 
+//include('Parsedown.php');
+
 class PostController extends Controller
 {
 
@@ -17,8 +19,9 @@ class PostController extends Controller
     }
 
     public function show($postslug){
-
+        $Parsedown = new \Parsedown();
         $post = Post::where('slug',$postslug)->get()->first();
+        $post ->content = $Parsedown->text($post ->content);
         return view('posts.show',compact('post'));
     }
 

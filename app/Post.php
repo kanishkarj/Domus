@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    public function Tag(){
+    public function tags(){
         return $this->BelongsToMany(Tags::class);
     }
     public function user(){
