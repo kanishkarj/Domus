@@ -15,6 +15,7 @@ mix.js('resources/assets/js/app.js', 'public/js/')
     .js('resources/assets/js/authFunctions.js', 'public/js/')
     .sass('resources/assets/sass/app.scss', 'public/css/')
     .sass('resources/assets/sass/forms.sass', 'public/css/')
+    .sass('resources/assets/sass/showPosts.sass', 'public/css/')
     .sass('resources/assets/sass/master.sass', 'public/css/');
 
 //.js('resources/assets/js/projectData.js', 'public/js/')

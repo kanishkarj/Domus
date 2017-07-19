@@ -4,5 +4,6 @@
   "/js/projectData.js": "/js/projectData.js",
   "/css/master.css": "/css/master.css",
   "/js/authFunctions.js": "/js/authFunctions.js",
-  "/css/forms.css": "/css/forms.css"
+  "/css/forms.css": "/css/forms.css",
+  "/css/showPosts.css": "/css/showPosts.css"
 }

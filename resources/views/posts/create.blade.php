@@ -30,10 +30,12 @@
                     </div>
                     <div class="file-upload-content">
                         <img class="file-upload-image img-responsive" src="#" alt="your image" />
+                        <textarea class="ImageCaption" placeholder="Enter Image caption here..."></textarea>
                         <div class="image-title-wrap">
                             <button type="button" onclick="removeUpload(this);" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
                         </div>
                     </div>
+                    
                 </div>
             </li>
        </ul>
@@ -54,9 +56,7 @@
             <input type="text" placeholder="Subtitle" id="subtitle" name="subtitle">
             <input type="text" placeholder="Enter your tags here seperated by coma ..." id="tags" name="tags">
             <textarea placeholder="Enter Content Here..." name="content" id="content" cols="30" rows="20"></textarea>
-            <div id="HiddenInputs" style="display:none;">
-
-            </div>
+            
         </form>
 
     </div>
@@ -96,6 +96,8 @@ function removeUpload(el) {
   $(el).parents().eq(3).find('.file-upload-input').replaceWith($(el).parents().eq(3).find('.file-upload-input').clone());
   $(el).parents().eq(3).find('.file-upload-content').hide();
   $(el).parents().eq(3).find('.image-upload-wrap').show();
+  $(el).parents().eq(3).find('input').val(null);
+    $(el).parents().eq(3).find('textarea').val(null);
 }
     $('.image-upload-wrap').bind('dragover', function () {
 		    $('.image-upload-wrap').addClass('image-dropping');
@@ -115,6 +117,7 @@ function addImageElement(){
                     </div>\
                     <div class="file-upload-content">\
                         <img class="file-upload-image img-responsive" src="#" alt="your image" />\
+                        <textarea class="ImageCaption" placeholder="Enter Image caption here..."></textarea>\
                         <div class="image-title-wrap">\
                             <button type="button" onclick="removeUpload(this)" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>\
                         </div>\
@@ -128,10 +131,14 @@ function addImageElement(){
 function submitPost(){
     var imgid=1;
     $("#imageList").find('input').toArray().forEach(function(element) {
-        $(element).attr('name','img' + imgid.toString());
-        imgid++;
-        $('#postForm').append($(element).clone());
-    });
+        if($(element).val()){
+            $(element).attr('name','img' + imgid.toString());
+            $(element).parents().eq(2).find('textarea').attr('name','caption' + imgid.toString());
+            imgid++;
+            $('#postForm').append($(element).clone());
+            $('#postForm').append($(element).parents().eq(2).find('textarea').clone());
+        }});
+    
     $('#postForm').submit();
 }
     </script>

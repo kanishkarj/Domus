@@ -64,10 +64,11 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $path = '';
-        if($file = $data['profile-picture']){
-            $path = $file->store('public/profile-pictures');
+        if($file = $data['avatar']){
+            $path = $file->store('public/avatars');
         }
         $path = str_replace('public','storage',$path);
+        $path = '$' . $path;
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

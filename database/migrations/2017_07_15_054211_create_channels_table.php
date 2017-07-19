@@ -34,6 +34,12 @@ class CreateChannelsTable extends Migration
             $table->string('user_id');
             $table->timestamps();
         });
+        Schema::create('blocked_users', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('channels_id');
+            $table->string('user_id');
+            $table->timestamps();
+        });
     }
 
     /**

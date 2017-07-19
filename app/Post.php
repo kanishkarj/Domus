@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-use App\Image;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
