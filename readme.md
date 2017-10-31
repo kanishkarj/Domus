@@ -1,3 +1,3 @@
 # Domus
 
-This pproject was to help  dicovery.
+This project was to help  dicovery.
